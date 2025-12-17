@@ -4,7 +4,7 @@ services:
   pdf-convert:
     build: .
     ports:
-      - "8000:8000"
+      - "8101:8101"
     volumes:
       - ./uploads:/app/uploads
       - ./outputs:/app/outputs
@@ -13,7 +13,7 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8101/health"]
       interval: 30s
       timeout: 10s
       retries: 3
