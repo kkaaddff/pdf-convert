@@ -3,6 +3,9 @@ FROM python:3.12-slim
 # Set working directory
 WORKDIR /app
 
+# Use Chinese mirror for faster apt downloads
+RUN sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources
+
 # Install system dependencies for PDF processing
 # Note: libgl1 replaces libgl1-mesa-glx in newer Debian versions
 RUN apt-get update && apt-get install -y --no-install-recommends \
