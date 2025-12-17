@@ -41,15 +41,15 @@ sleep 10
 echo "🔍 检查服务状态..."
 if docker-compose ps | grep -q "Up"; then
     echo "✅ 服务启动成功！"
-    echo "📝 服务地址: http://localhost:8000"
-    echo "🏥 健康检查: http://localhost:8000/health"
+    echo "📝 服务地址: http://localhost:8101"
+    echo "🏥 健康检查: http://localhost:8101/health"
     echo ""
     echo "📋 常用命令:"
     echo "  查看日志: docker-compose logs -f"
     echo "  停止服务: docker-compose down"
     echo "  重启服务: docker-compose restart"
     echo ""
-    echo "🌐 访问 http://localhost:8000 开始使用"
+    echo "🌐 访问 http://localhost:8101 开始使用"
 else
     echo "❌ 服务启动失败，请检查日志:"
     docker-compose logs
