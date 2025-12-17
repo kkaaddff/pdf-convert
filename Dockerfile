@@ -4,22 +4,16 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Install system dependencies for PDF processing
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+# Note: libgl1 replaces libgl1-mesa-glx in newer Debian versions
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
     libglib2.0-0 \
     libsm6 \
     libxext6 \
-    libxrender-dev \
+    libxrender1 \
     libgomp1 \
-    libgthread-2.0-0 \
-    libnss3 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libgtk-3-0 \
-    libxss1 \
-    libasound2 \
     poppler-utils \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
